@@ -72,7 +72,7 @@ console.log('Hiz:', hiz, 'Aci:', aci)
 function carkiCiz() {
 
   if (hiz < 0) return;
-  if (hiz !== 0)  alert(hiz)
+  if (hiz !== 0)  alert(hiz, `3`)
  
   
   cizimKonteksti.save();
@@ -156,11 +156,7 @@ function handleEvent(event) {
 
 // Then we bind via thát event. This way we only bind one event, instead of the two as below
 
-/* canvasElementi.addEventListener('touchstart', handleEvent);
-  canvasElementi.addEventListener('touchend', handleEvent); */
-  canvasElementi.addEventListener('mousedown', handleEvent);
-  /* canvasElementi.addEventListener('mouseup', handleEvent); */
-  canvasElementi.addEventListener(touchEvent, () => {
+  canvasElementi.addEventListener(touchEvent, handleEvent);
 
   /*   if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
    
@@ -176,7 +172,6 @@ function handleEvent(event) {
     hiz = donusHizi;
    
     tikSayaci++; */
-  })
 
   window.requestAnimationFrame(function animasyon(ts) {
  
