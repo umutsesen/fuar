@@ -98,7 +98,7 @@ let aci = 0;
 function carkiCiz() {
 
   if (hiz < 0) return;
-  if (hiz !== 0)  alert(`3`)
+  if (hiz !== 0)  alert(hiz)
  
   
   cizimKonteksti.save();
@@ -226,10 +226,10 @@ function handleEvent(event) {
     tikSayaci++; */
 hiz=50
   window.requestAnimationFrame(function animasyon(ts) {
-    if (!sonGuncelleme) sonGuncelleme = ts;
+   /*  if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
-    }
+    } */
     hiz=50
     sonGuncelleme = ts;
     hiz=50
