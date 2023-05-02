@@ -68,7 +68,7 @@ secenekler.forEach((_, i) => {
 let azalma = -0.01;
 let hiz = 0;
 let aci = 0;
-console.log('Hiz:', hiz, 'Aci:', aci)
+
 function carkiCiz() {
 
   if (hiz < 0) return;
@@ -125,8 +125,7 @@ function carkiCiz() {
   cizimKonteksti.drawImage(merkezResmi, -imageSize / 2, -imageSize / 2, imageSize, imageSize);
 }
 function handleEvent(event) {
-  var debugElement = document.getElementById('debug');
-
+  if (isUsed) return
   isUsed = true;
   let q = localStorage.getItem("donusAcilari");
   
@@ -134,22 +133,17 @@ function handleEvent(event) {
   let a = arrayX.shift()
   localStorage.setItem("donusAcilari", arrayX)
   localStorage.setItem('kullanım', Number(localStorage.getItem('kullanım')) + 1);
-  debugElement.innerHTML += 'Kullanım: ' + localStorage.getItem('kullanım') + '<br>';
 
   const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
-  debugElement.innerHTML += 'Hedef Donus: ' + hedefDonus + '<br>';
+
 
   const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
   hiz = donusHizi;
-  debugElement.innerHTML += 'Hiz: ' + hiz + '<br>';
+
 
   tikSayaci++;
 
-  if(event.type === 'touchstart' || event.type === 'touchend') {
-    debugElement.innerHTML += 'Event type: ' + event.type + ' Touch coordinates: ' + event.touches[0].clientX + ', ' + event.touches[0].clientY + '<br>';
-  } else if(event.type === 'mousedown' || event.type === 'mouseup') {
-    debugElement.innerHTML += 'Event type: ' + event.type + ' Mouse coordinates: ' + event.clientX + ', ' + event.clientY + '<br>';
-  }
+ 
 }
 
 
