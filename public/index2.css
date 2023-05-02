@@ -6,3 +6,6 @@ body,html {
     justify-content: center;
     align-items: center;
 }
+#debug {
+    margin-left: 25rem;
+}
