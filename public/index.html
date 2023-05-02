@@ -122,21 +122,12 @@ function carkiCiz() {
   cizimKonteksti.drawImage(merkezResmi, -imageSize / 2, -imageSize / 2, imageSize, imageSize);
 }
 function handleEvent(event) {
- 
-  if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
-   
-   isUsed = true;
-   let q = localStorage.getItem("donusAcilari");
-  
-    let arrayX = q.split(',').map(Number);
-   let a = arrayX.shift()
-   localStorage.setItem("donusAcilari", arrayX)
-   localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
-   const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
-   const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
-   hiz = donusHizi;
-  
-   tikSayaci++;
+  alert('Event type:', event.type); // Log the event type
+  if(event.type === 'touchstart' || event.type === 'touchend') {
+    alert('Touch coordinates:', event.touches[0].clientX, event.touches[0].clientY);
+  } else if(event.type === 'mousedown' || event.type === 'mouseup') {
+    alert('Mouse coordinates:', event.clientX, event.clientY);
+  }
 }
 
 // Add event listeners for all the event types you're interested in
@@ -152,7 +143,7 @@ canvasElementi.addEventListener('mouseup', handleEvent);
 
   
   canvasElementi.addEventListener(touchEvent, () => {
-  /* 
+  
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
    
     isUsed = true;
@@ -166,7 +157,7 @@ canvasElementi.addEventListener('mouseup', handleEvent);
     const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
     hiz = donusHizi;
    
-    tikSayaci++; */
+    tikSayaci++;
   })
 
   window.requestAnimationFrame(function animasyon(ts) {
