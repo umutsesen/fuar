@@ -98,7 +98,7 @@ let aci = 0;
 function carkiCiz() {
 
   if (hiz < 0) return;
-  if (hiz !== 0)  alert(hiz)
+/*   if (hiz !== 0)  alert(hiz) */
  
   
   cizimKonteksti.save();
@@ -224,8 +224,8 @@ function handleEvent(event) {
     hiz = donusHizi;
    
     tikSayaci++; */
-hiz=50
-  window.requestAnimationFrame(function animasyon(ts) {
+
+/*   window.requestAnimationFrame(function animasyon(ts) {
     if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
@@ -234,13 +234,13 @@ hiz=50
     sonGuncelleme = ts;
     hiz=50
     hiz += hiz * azalma;
-    alert(`animationframe", ${hiz}, ${sonGuncelleme}, ${azalma}, 123`)
+   
     carkiCiz();
 
     window.requestAnimationFrame(animasyon);
   })
-
-
+ */
+hiz=1000
 function animasyon() {
   hiz += hiz * azalma;
 
