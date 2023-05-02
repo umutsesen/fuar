@@ -1,0 +1,45 @@
+{
+  "name": "06tut",
+  "version": "1.0.0",
+  "description": "Express tutorial",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Dave Gray",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1344.0",
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "date-fns": "^2.23.0",
+    "device-uuid": "^1.0.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.2.0",
+    "express-rate-limit": "^6.7.0",
+    "joi": "^17.7.0",
+    "json2csv": "^6.0.0-alpha.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.8.1",
+    "node-device-detector": "^2.0.10",
+    "node-localstorage": "^2.2.1",
+    "node-machine-id": "^1.1.12",
+    "nodemailer": "^6.8.0",
+    "nodemailer-postmark-transport": "^5.2.1",
+    "randomstring": "^1.2.3",
+    "redis": "^4.5.1",
+    "store2": "^2.14.2",
+    "twilio": "^3.84.0",
+    "uuid": "^8.3.2",
+    "winston": "^3.8.2",
+    "winston-mongodb": "^5.1.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

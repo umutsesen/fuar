@@ -1,0 +1,158 @@
+<aside>
+  <div>
+  </div>
+  <!-- <button id="ekle">Ekle</button> -->
+</aside>
+<main>
+  <canvas></canvas>
+</main>
+
+<!-- Kullanılan harici JavaScript kütüphaneleri -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+
+<script>
+const canvasElementi = document.querySelector('canvas');
+const merkezResmi = new Image();
+merkezResmi.src = './vite.svg'; //logo wip
+merkezResmi.onload = carkiCiz;
+
+const cizimKonteksti = canvasElementi.getContext('2d');
+canvasElementi.height = document.body.offsetHeight;
+canvasElementi.width = document.body.offsetWidth;
+if (!localStorage.getItem("kullanım")) localStorage.setItem("donusAcilari", [2474,1901,2018,1966,1971,2154,2104,2020,1920]);
+if (!localStorage.getItem("kullanım")) localStorage.setItem("kullanım", 1);
+cizimKonteksti.font = '24px sans-serif'; // Font boyutunu artırın
+
+const donusAçilari = localStorage.getItem('donusAcilari').split(',').map(Number);
+console.log(donusAçilari)
+let tikSayaci = 0;
+const yaricap = Math.min(canvasElementi.height, canvasElementi.width) / 2 - 10;
+
+// Çarktaki seçenekler
+const secenekler = ["Boş", "Benjamin Kadın", "Termos", "Yargıcı T-shirt", "Boş", "Yargıcı Elbise", "Benjamin Erkek", "Kadın Aksesuar", "Boş", "Yargıcı Pantalon", "Yargıcı Etek", "Erkek Çorap"];
+
+const dolguStilleri = [];
+secenekler.forEach((_, i) => {
+  dolguStilleri.push(i % 2 == 0 ? [0, 0, 0] : [255, 255, 255]); // Siyah ve beyaz arasında değişim knk
+});
+
+let azalma = -0.01;
+let hiz = 0;
+let aci = 0;
+
+function carkiCiz() {
+  if (hiz < 0) return;
+  
+  cizimKonteksti.save();
+  cizimKonteksti.clearRect(0, 0, canvasElementi.width, canvasElementi.height);
+  cizimKonteksti.translate(canvasElementi.width/2, canvasElementi.height/2);
+  cizimKonteksti.rotate(aci += hiz);
+
+  const artim = 2 * Math.PI / secenekler.length;
+  let c, s, m;
+
+  for (var i = 0, j = 0; i <= 2 * Math.PI && j < secenekler.length; i += artim, j++) {
+    c = Math.cos(i);
+    s = Math.sin(i);
+    const [r, g, b] = dolguStilleri[j];
+
+    cizimKonteksti.beginPath();
+    cizimKonteksti.fillStyle = `rgb(${r}, ${g}, ${b})`;
+    cizimKonteksti.moveTo(0, 0);
+    cizimKonteksti.lineTo(yaricap * c, yaricap * s);
+    cizimKonteksti.lineWidth = '10px';
+      cizimKonteksti.arc(0, 0, yaricap, i, i + artim);
+      cizimKonteksti.lineTo(0, 0);
+      cizimKonteksti.fill();
+
+      cizimKonteksti.strokeStyle = 'black'; // Kenarlık rengini siyah olarak ayarla
+      cizimKonteksti.stroke();
+  
+
+      m = cizimKonteksti.measureText(secenekler[j]);
+      cizimKonteksti.fillStyle = r === 0 ? 'white' : 'black'; // FillStyle'a göre metin rengini ayarla (zıt renk)
+      cizimKonteksti.fillText(
+        secenekler[j],
+        yaricap / 2 * Math.cos(i + artim / 2) - m.width / 2,
+        yaricap / 2 * Math.sin(i + artim / 2) + m.actualBoundingBoxAscent / 2
+      );
+    }
+  
+    cizimKonteksti.stroke();
+    cizimKonteksti.restore();
+  
+    cizimKonteksti.beginPath();
+    cizimKonteksti.fillStyle = 'black';
+    cizimKonteksti.moveTo(canvasElementi.width/2, 10);
+    cizimKonteksti.lineTo(canvasElementi.width/2 - 10, 10);
+    cizimKonteksti.lineTo(canvasElementi.width/2 + 10 * (aci % artim), 50);
+    cizimKonteksti.lineTo(canvasElementi.width/2 + 10, 10);
+    cizimKonteksti.fill();
+    cizimKonteksti.stroke();
+  }
+
+  let sonGuncelleme;
+
+  canvasElementi.onclick = () => {
+    if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+    let q = localStorage.getItem("donusAcilari");
+     let arrayX = q.split(',').map(Number);
+    let a = arrayX.shift()
+    localStorage.setItem("donusAcilari", arrayX)
+    localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+    const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
+    hiz = donusHizi;
+
+    tikSayaci++;
+  };
+
+  window.requestAnimationFrame(function animasyon(ts) {
+    if (!sonGuncelleme) sonGuncelleme = ts;
+    if (ts - sonGuncelleme < 10) {
+      return window.requestAnimationFrame(animasyon);
+    }
+   
+    sonGuncelleme = ts;
+    hiz += hiz * azalma;
+    carkiCiz();
+    window.requestAnimationFrame(animasyon);
+  })
+
+  carkiCiz();
+
+  function elemanEkle(deger) {
+    secenekler.push(deger);
+  }
+
+  function elemanCikar(index) {
+    secenekler.splice(index, 1);
+    dolguStilleri.splice(index, 1);
+    carkiCiz();
+  }
+
+  function baskaEkle(idx, deger = '', dolguStili = dolguStilleri[idx]) {
+    const wrapper = document.querySelector('aside > div');
+    const satir = document.createElement('div');
+    const girdi = document.createElement('input');
+    girdi.value = deger;
+    girdi.oninput = (e) => (secenekler[idx] = e.target.value);
+    const silmeButonu = document.createElement('button');
+    silmeButonu.innerText = 'x';
+    silmeButonu.onclick = () => {
+      elemanCikar(idx);
+      wrapper.removeChild(satir);
+    }
+    satir.appendChild(girdi);
+    satir.appendChild(silmeButonu);
+    wrapper.appendChild(satir);
+    
+    dolguStilleri[idx] = idx % 2 === 0 ? [0, 0, 0] : [255, 255, 255]; // Siyah ve beyaz arasında değiş yeni eklerken.
+  }
+
+  const baskaEkleBtn = document.querySelector('#ekle');
+  baskaEkleBtn.onclick = () => baskaEkle(secenekler.length);
+
+  secenekler.forEach((deger, i) => baskaEkle(i, deger, dolguStilleri[i]));
+</script>
+
