@@ -130,12 +130,15 @@ function carkiCiz() {
 
   
   canvasElementi.addEventListener(touchEvent, () => {
-    alert("1xxx", isUsed)
+  /*   alert("1xxx", isUsed)
    if (isUsed) return;
-   alert('isused gect')
+   alert('isused gect') */
+   alert('1')
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+    alert('2')
     isUsed = true;
     let q = localStorage.getItem("donusAcilari");
+    alert(q, 'donussacilari')
      let arrayX = q.split(',').map(Number);
     let a = arrayX.shift()
     localStorage.setItem("donusAcilari", arrayX)
@@ -143,6 +146,7 @@ function carkiCiz() {
     const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
     const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
     hiz = donusHizi;
+    alert('sadsadasd')
     alert('hizzz')
     tikSayaci++;
   })
