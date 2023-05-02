@@ -17,7 +17,7 @@
       </div>
 
       <button id="ekle">Ekle</button> -->
-      <button id="cevir" style="visibility:hidden;">Cevir Ustammm</button>
+   
     </aside>
     <main id="cark">
       <canvas></canvas>
@@ -25,12 +25,12 @@
   </body>
 </html>
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
-
-<script src="index.js"></script>
+<!-- 
+<script src="index.js"></script> -->
 
 <script>
   let isUsed = false;
-  document.getElementById('cark').style.visibility = "hidden";
+ /*  document.getElementById('cark').style.visibility = "hidden"; */
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
@@ -69,7 +69,7 @@ let aci = 0;
 console.log('Hiz:', hiz, 'Aci:', aci)
 function carkiCiz() {
   if (hiz < 0) return;
-  alert('Hiz:', hiz, 'Aci:', aci)
+ 
   
   cizimKonteksti.save();
   cizimKonteksti.clearRect(0, 0, canvasElementi.width, canvasElementi.height);
@@ -131,10 +131,10 @@ function carkiCiz() {
   canvasElementi.addEventListener(touchEvent, () => {
   
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
-    alert('2')
+   
     isUsed = true;
     let q = localStorage.getItem("donusAcilari");
-    alert(q, 'donussacilari')
+   
      let arrayX = q.split(',').map(Number);
     let a = arrayX.shift()
     localStorage.setItem("donusAcilari", arrayX)
