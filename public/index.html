@@ -27,11 +27,11 @@ rel="stylesheet"/>
 </main>
 
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
-<script src="index.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+<script src="index.js"></script> -->
 
 <script>
-  document.getElementById('cark').style.visibility = "hidden";
+ /*  document.getElementById('cark').style.visibility = "hidden"; */
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
@@ -49,7 +49,7 @@ if (!localStorage.getItem("kullanım")) localStorage.setItem("donusAcilari", [
   2104,2196,1918,2070,2136,1962,2080,1837,2167,1894
 ]);
 if (!localStorage.getItem("kullanım")) localStorage.setItem("kullanım", 1);
-cizimKonteksti.font = '28px sans-serif'; // Font boyutunu artırın
+cizimKonteksti.font = '22px sans-serif'; // Font boyutunu artırın
 
 const donusAçilari = localStorage.getItem('donusAcilari').split(',').map(Number);
 console.log(donusAçilari)
