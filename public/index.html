@@ -136,8 +136,10 @@ function handleEvent(event) {
    alert(localStorage.getItem('kullanım'))
    alert(arrayX)
    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+   alert(hedefDonus)
    const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
    hiz = donusHizi;
+   alert(hiz, donusHizi)
   
    tikSayaci++;
   if(event.type === 'touchstart' || event.type === 'touchend') {
@@ -158,7 +160,7 @@ function handleEvent(event) {
   /* canvasElementi.addEventListener('mouseup', handleEvent); */
   canvasElementi.addEventListener(touchEvent, () => {
 
-    if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+  /*   if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
    
     isUsed = true;
     let q = localStorage.getItem("donusAcilari");
@@ -166,12 +168,12 @@ function handleEvent(event) {
      let arrayX = q.split(',').map(Number);
     let a = arrayX.shift()
     localStorage.setItem("donusAcilari", arrayX)
-    localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+    localStorage.setItem('kullanım', Number(localStorage.getItem('kullanım')) + 1)
     const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
     const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
     hiz = donusHizi;
    
-    tikSayaci++;
+    tikSayaci++; */
   })
 
   window.requestAnimationFrame(function animasyon(ts) {
