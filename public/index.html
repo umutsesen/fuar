@@ -37,7 +37,7 @@ const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
 merkezResmi.onload = carkiCiz;
-localStorage.clear("kullanım")
+/* localStorage.clear("kullanım") */
 const cizimKonteksti = canvasElementi.getContext('2d');
 canvasElementi.height = document.body.offsetHeight;
 canvasElementi.width = document.body.offsetWidth;
@@ -55,7 +55,7 @@ cizimKonteksti.font = '22px sans-serif'; // Font boyutunu artırın
 const donusAçilari = localStorage.getItem('donusAcilari').split(',').map(Number);
 console.log(donusAçilari)
 let tikSayaci = 0;
-const yaricap = Math.min(canvasElementi.height, canvasElementi.width) / 2 - 50;
+const yaricap = Math.min(canvasElementi.height, canvasElementi.width) / 2 - 30;
 
 // Çarktaki seçenekler
 const secenekler = ["Boş", "Benjamin Kadın", "Termos", "Yargıcı T-shirt", "Boş", "Yargıcı Elbise", "Benjamin Erkek", "Kadın Aksesuar", "Boş", "Yargıcı Pantalon", "Yargıcı Etek", "Erkek Çorap"];
