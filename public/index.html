@@ -226,10 +226,10 @@ function handleEvent(event) {
     tikSayaci++; */
 hiz=50
   window.requestAnimationFrame(function animasyon(ts) {
-   /*  if (!sonGuncelleme) sonGuncelleme = ts;
+    if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
-    } */
+    }
     hiz=50
     sonGuncelleme = ts;
     hiz=50
@@ -239,6 +239,19 @@ hiz=50
 
     window.requestAnimationFrame(animasyon);
   })
+
+
+function animasyon() {
+  hiz += hiz * azalma;
+
+  carkiCiz();
+
+  if(hiz > 0) {
+    setTimeout(animasyon, 10);
+  }
+}
+
+animasyon();
  /*  carkiCiz(); */
 
   function elemanEkle(deger) {
