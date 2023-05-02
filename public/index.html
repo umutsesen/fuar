@@ -124,7 +124,20 @@ function carkiCiz() {
 }
 function handleEvent(event) {
   var debugElement = document.getElementById('debug');
+  if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+   
+   isUsed = true;
+   let q = localStorage.getItem("donusAcilari");
   
+    let arrayX = q.split(',').map(Number);
+   let a = arrayX.shift()
+   localStorage.setItem("donusAcilari", arrayX)
+   localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+   const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+   const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
+   hiz = donusHizi;
+  
+   tikSayaci++;
   if(event.type === 'touchstart' || event.type === 'touchend') {
     debugElement.innerHTML += 'Event type: ' + event.type + ' Touch coordinates: ' + event.touches[0].clientX + ', ' + event.touches[0].clientY + '<br>';
   } else if(event.type === 'mousedown' || event.type === 'mouseup') {
@@ -137,10 +150,10 @@ function handleEvent(event) {
 
 // Then we bind via thát event. This way we only bind one event, instead of the two as below
 
-canvasElementi.addEventListener('touchstart', handleEvent);
-  canvasElementi.addEventListener('touchend', handleEvent);
+/* canvasElementi.addEventListener('touchstart', handleEvent);
+  canvasElementi.addEventListener('touchend', handleEvent); */
   canvasElementi.addEventListener('mousedown', handleEvent);
-  canvasElementi.addEventListener('mouseup', handleEvent);
+  /* canvasElementi.addEventListener('mouseup', handleEvent); */
   canvasElementi.addEventListener(touchEvent, () => {
 
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
