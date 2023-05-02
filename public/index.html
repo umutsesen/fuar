@@ -121,7 +121,29 @@ function carkiCiz() {
   const imageSize = 200;  // Define the size of the image
   cizimKonteksti.drawImage(merkezResmi, -imageSize / 2, -imageSize / 2, imageSize, imageSize);
 }
+function handleEvent(event) {
+ 
+  if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+   
+   isUsed = true;
+   let q = localStorage.getItem("donusAcilari");
+  
+    let arrayX = q.split(',').map(Number);
+   let a = arrayX.shift()
+   localStorage.setItem("donusAcilari", arrayX)
+   localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+   const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+   const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
+   hiz = donusHizi;
+  
+   tikSayaci++;
+}
 
+// Add event listeners for all the event types you're interested in
+canvasElementi.addEventListener('touchstart', handleEvent);
+canvasElementi.addEventListener('touchend', handleEvent);
+canvasElementi.addEventListener('mousedown', handleEvent);
+canvasElementi.addEventListener('mouseup', handleEvent);
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
   let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
@@ -130,7 +152,7 @@ function carkiCiz() {
 
   
   canvasElementi.addEventListener(touchEvent, () => {
-  
+  /* 
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
    
     isUsed = true;
@@ -144,7 +166,7 @@ function carkiCiz() {
     const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
     hiz = donusHizi;
    
-    tikSayaci++;
+    tikSayaci++; */
   })
 
   window.requestAnimationFrame(function animasyon(ts) {
