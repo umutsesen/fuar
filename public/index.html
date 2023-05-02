@@ -97,7 +97,7 @@ let aci = 0;
 
 function carkiCiz() {
 
- /*  if (hiz < 0) return; */
+  if (hiz < 0) return;
  /*  if (hiz !== 0)  alert(hiz, `3`) */
  
   
@@ -230,14 +230,15 @@ hiz=50
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
     }
-
+    hiz=50
     sonGuncelleme = ts;
+    hiz=50
     hiz += hiz * azalma;
     carkiCiz();
 
     window.requestAnimationFrame(animasyon);
   })
-  carkiCiz();
+ /*  carkiCiz(); */
 
   function elemanEkle(deger) {
     secenekler.push(deger);
