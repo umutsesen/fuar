@@ -37,7 +37,7 @@ const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
 merkezResmi.onload = carkiCiz;
-
+localStorage.clear("kullanım")
 const cizimKonteksti = canvasElementi.getContext('2d');
 canvasElementi.height = document.body.offsetHeight;
 canvasElementi.width = document.body.offsetWidth;
@@ -132,7 +132,7 @@ function handleEvent(event) {
     let arrayX = q.split(',').map(Number);
    let a = arrayX.shift()
    localStorage.setItem("donusAcilari", arrayX)
-   localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+   localStorage.setItem('kullanım', Number(localStorage.getItem('kullanım')) + 1)
    alert(localStorage.getItem('kullanım'))
    alert(arrayX)
    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
