@@ -124,15 +124,17 @@ function carkiCiz() {
 }
 function handleEvent(event) {
   var debugElement = document.getElementById('debug');
-  if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
-   
-   isUsed = true;
+  /* if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+    */
+    isUsed = true;
    let q = localStorage.getItem("donusAcilari");
   
     let arrayX = q.split(',').map(Number);
    let a = arrayX.shift()
    localStorage.setItem("donusAcilari", arrayX)
    localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+   alert(localStorage.getItem('kullanım'))
+   alert(arrayX)
    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
    const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
    hiz = donusHizi;
