@@ -28,9 +28,10 @@ rel="stylesheet"/>
 
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
 
-<script src="index.js"></script>
-
+<!-- <script src="index.js"></script>
+ -->
 <script>
+  let isUsed = false;
   document.getElementById('cark').style.visibility = "hidden";
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
@@ -128,8 +129,10 @@ function carkiCiz() {
     alert("5535")
   }
   canvasElementi.onclick = () => {
-    alert("1xxx")
+   /*  alert("1xxx") */
+   if (isUsed) return;
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+    isUsed = true;
     let q = localStorage.getItem("donusAcilari");
      let arrayX = q.split(',').map(Number);
     let a = arrayX.shift()
