@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
     <link href="index2.css" rel="stylesheet">
@@ -32,31 +31,6 @@
 <script src="index.js"></script> -->
 
 <script>
-  (function() {
-    var lastTime = 0;
-    var vendors = ['webkit', 'moz'];
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-      window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-      window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] || window[vendors[x]+'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame) {
-      window.requestAnimationFrame = function(callback, element) {
-        var currTime = new Date().getTime();
-        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-        var id = window.setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
-        lastTime = currTime + timeToCall;
-        return id;
-      };
-    }
-
-    if (!window.cancelAnimationFrame) {
-      window.cancelAnimationFrame = function(id) {
-        clearTimeout(id);
-      };
-    }
-  }());
-
   let isUsed = false;
  /*  document.getElementById('cark').style.visibility = "hidden"; */
 const canvasElementi = document.querySelector('canvas');
@@ -94,11 +68,11 @@ secenekler.forEach((_, i) => {
 let azalma = -0.01;
 let hiz = 0;
 let aci = 0;
-
+console.log('Hiz:', hiz, 'Aci:', aci)
 function carkiCiz() {
 
   if (hiz < 0) return;
-/*   if (hiz !== 0)  alert(hiz) */
+ /*  if (hiz !== 0)  alert(hiz, `3`) */
  
   
   cizimKonteksti.save();
@@ -224,35 +198,22 @@ function handleEvent(event) {
     hiz = donusHizi;
    
     tikSayaci++; */
-hiz=50
+
   window.requestAnimationFrame(function animasyon(ts) {
+ 
     if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
     }
-    hiz=50
-    sonGuncelleme = ts;
-    hiz=50
-    hiz += hiz * azalma;
    
+    sonGuncelleme = ts;
+    hiz += hiz * azalma;
     carkiCiz();
-
+ 
     window.requestAnimationFrame(animasyon);
   })
 
-
-function animasyon() {
-  hiz += hiz * azalma;
-
   carkiCiz();
-
-  if(hiz > 0) {
-    setTimeout(animasyon, 10);
-  }
-}
-
-animasyon();
- /*  carkiCiz(); */
 
   function elemanEkle(deger) {
     secenekler.push(deger);
