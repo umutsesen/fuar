@@ -8,6 +8,7 @@
   </head>
   <body>
     <aside>
+      <div id="debug"></div>
       <a id="sizeandmeproductimg" href="" style="opacity: 0; height:0px;"></a>
       <img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1.jpg" width="200px" id="sizeandmeProductImg" style="opacity: 0; height:0px;">
       <span id="sizeAndMeProductCode" style="opacity: 0; height:0px;">BSS1-126-11</span>
@@ -122,28 +123,26 @@ function carkiCiz() {
   cizimKonteksti.drawImage(merkezResmi, -imageSize / 2, -imageSize / 2, imageSize, imageSize);
 }
 function handleEvent(event) {
-  alert('Event type:', event.type); // Log the event type
+  var debugElement = document.getElementById('debug');
+  
   if(event.type === 'touchstart' || event.type === 'touchend') {
-    alert('Touch coordinates:', event.touches[0].clientX, event.touches[0].clientY);
+    debugElement.innerHTML += 'Event type: ' + event.type + ' Touch coordinates: ' + event.touches[0].clientX + ', ' + event.touches[0].clientY + '<br>';
   } else if(event.type === 'mousedown' || event.type === 'mouseup') {
-    alert('Mouse coordinates:', event.clientX, event.clientY);
+    debugElement.innerHTML += 'Event type: ' + event.type + ' Mouse coordinates: ' + event.clientX + ', ' + event.clientY + '<br>';
   }
 }
-
-// Add event listeners for all the event types you're interested in
-canvasElementi.addEventListener('touchstart', handleEvent);
-canvasElementi.addEventListener('touchend', handleEvent);
-canvasElementi.addEventListener('mousedown', handleEvent);
-canvasElementi.addEventListener('mouseup', handleEvent);
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
   let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 
 // Then we bind via thát event. This way we only bind one event, instead of the two as below
 
-  
+canvasElementi.addEventListener('touchstart', handleEvent);
+  canvasElementi.addEventListener('touchend', handleEvent);
+  canvasElementi.addEventListener('mousedown', handleEvent);
+  canvasElementi.addEventListener('mouseup', handleEvent);
   canvasElementi.addEventListener(touchEvent, () => {
-  
+
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
    
     isUsed = true;
