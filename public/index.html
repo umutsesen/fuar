@@ -27,11 +27,11 @@ rel="stylesheet"/>
 </main>
 
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
-<script src="index.js"></script> -->
+
+<script src="index.js"></script>
 
 <script>
- /*  document.getElementById('cark').style.visibility = "hidden"; */
+  document.getElementById('cark').style.visibility = "hidden";
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
@@ -121,8 +121,14 @@ function carkiCiz() {
 
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
-
+  canvasElementi.onchange = () => {
+    alert("123123123")
+  }
+  canvasElementi.ondrag = () => {
+    alert("5535")
+  }
   canvasElementi.onclick = () => {
+    alert("1xxx")
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
     let q = localStorage.getItem("donusAcilari");
      let arrayX = q.split(',').map(Number);
