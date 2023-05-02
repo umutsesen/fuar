@@ -224,8 +224,8 @@ function handleEvent(event) {
     hiz = donusHizi;
    
     tikSayaci++; */
-
-/*   window.requestAnimationFrame(function animasyon(ts) {
+hiz=50
+  window.requestAnimationFrame(function animasyon(ts) {
     if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
@@ -239,8 +239,8 @@ function handleEvent(event) {
 
     window.requestAnimationFrame(animasyon);
   })
- */
-hiz=1000
+
+
 function animasyon() {
   hiz += hiz * azalma;
 
@@ -252,20 +252,7 @@ function animasyon() {
 }
 
 animasyon();
-animasyon();
-animasyon();
-animasyon();
-animasyon();
-animasyon();
-animasyon();
-carkiCiz();
-carkiCiz();
-carkiCiz();
-carkiCiz();
-
-carkiCiz();
-carkiCiz();
-  carkiCiz();
+ /*  carkiCiz(); */
 
   function elemanEkle(deger) {
     secenekler.push(deger);
