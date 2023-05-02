@@ -91,7 +91,7 @@ function carkiCiz() {
     cizimKonteksti.stroke();
   }
 
-  let sonGuncelleme;
+/*   let sonGuncelleme; */
 
   canvasElementi.onclick = () => {
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
@@ -106,7 +106,7 @@ function carkiCiz() {
 
     tikSayaci++;
   };
-
+/* 
   window.requestAnimationFrame(function animasyon(ts) {
     if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
@@ -117,7 +117,25 @@ function carkiCiz() {
     hiz += hiz * azalma;
     carkiCiz();
     window.requestAnimationFrame(animasyon);
-  })
+  }) */
+  let sonGuncelleme;
+let prevTs;
+
+window.requestAnimationFrame(function animasyon(ts) {
+  if (!sonGuncelleme) sonGuncelleme = ts;
+  if (ts - sonGuncelleme < 10) {
+    return window.requestAnimationFrame(animasyon);
+  }
+  
+  alert('Time difference:', ts - (prevTs || ts)); // Add this line
+  prevTs = ts;
+
+  sonGuncelleme = ts;
+  hiz += hiz * azalma;
+  carkiCiz();
+  window.requestAnimationFrame(animasyon);
+})
+
 
   carkiCiz();
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
     <link href="index.css" rel="stylesheet">
     <link href="index2.css" rel="stylesheet">
@@ -68,7 +69,7 @@ secenekler.forEach((_, i) => {
 let azalma = -0.01;
 let hiz = 0;
 let aci = 0;
-console.log('Hiz:', hiz, 'Aci:', aci)
+
 function carkiCiz() {
 
   if (hiz < 0) return;
@@ -198,7 +199,7 @@ function handleEvent(event) {
     hiz = donusHizi;
    
     tikSayaci++; */
-
+hiz=50
   window.requestAnimationFrame(function animasyon(ts) {
  
     if (!sonGuncelleme) sonGuncelleme = ts;
