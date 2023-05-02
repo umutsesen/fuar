@@ -126,8 +126,36 @@ function carkiCiz() {
 }
 function handleEvent(event) {
   var debugElement = document.getElementById('debug');
-  /* if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
-    */
+
+  isUsed = true;
+  let q = localStorage.getItem("donusAcilari");
+  
+  let arrayX = q.split(',').map(Number);
+  let a = arrayX.shift()
+  localStorage.setItem("donusAcilari", arrayX)
+  localStorage.setItem('kullanım', Number(localStorage.getItem('kullanım')) + 1);
+  debugElement.innerHTML += 'Kullanım: ' + localStorage.getItem('kullanım') + '<br>';
+
+  const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+  debugElement.innerHTML += 'Hedef Donus: ' + hedefDonus + '<br>';
+
+  const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
+  hiz = donusHizi;
+  debugElement.innerHTML += 'Hiz: ' + hiz + '<br>';
+
+  tikSayaci++;
+
+  if(event.type === 'touchstart' || event.type === 'touchend') {
+    debugElement.innerHTML += 'Event type: ' + event.type + ' Touch coordinates: ' + event.touches[0].clientX + ', ' + event.touches[0].clientY + '<br>';
+  } else if(event.type === 'mousedown' || event.type === 'mouseup') {
+    debugElement.innerHTML += 'Event type: ' + event.type + ' Mouse coordinates: ' + event.clientX + ', ' + event.clientY + '<br>';
+  }
+}
+
+
+/* function handleEvent(event) {
+  var debugElement = document.getElementById('debug');
+ 
     isUsed = true;
    let q = localStorage.getItem("donusAcilari");
   
@@ -135,13 +163,11 @@ function handleEvent(event) {
    let a = arrayX.shift()
    localStorage.setItem("donusAcilari", arrayX)
    localStorage.setItem('kullanım', Number(localStorage.getItem('kullanım')) + 1)
-   alert(localStorage.getItem('kullanım'))
-   alert(arrayX)
+ 
    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
-   alert(hedefDonus)
    const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
    hiz = donusHizi;
-   alert(hiz, donusHizi)
+  
   
    tikSayaci++;
   if(event.type === 'touchstart' || event.type === 'touchend') {
@@ -149,7 +175,7 @@ function handleEvent(event) {
   } else if(event.type === 'mousedown' || event.type === 'mouseup') {
     debugElement.innerHTML += 'Event type: ' + event.type + ' Mouse coordinates: ' + event.clientX + ', ' + event.clientY + '<br>';
   }
-}
+} */
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
   let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
