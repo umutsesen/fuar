@@ -124,9 +124,29 @@ function carkiCiz() {
 
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
-  cevir.onclick = () => canvasElementi.click()
+  let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
+
+// Then we bind via thát event. This way we only bind one event, instead of the two as below
+cevir.addEventListener(touchEvent, () => {
+    alert("1xxx")
+   if (isUsed) return;
+    if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
+    isUsed = true;
+    let q = localStorage.getItem("donusAcilari");
+     let arrayX = q.split(',').map(Number);
+    let a = arrayX.shift()
+    localStorage.setItem("donusAcilari", arrayX)
+    localStorage.setItem('kullanım', localStorage.getItem('kullanım') + 1)
+    const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
+    const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
+    hiz = donusHizi;
+
+    tikSayaci++;
+  });
+
+  
   canvasElementi.onclick = () => {
-   /*  alert("1xxx") */
+    alert("1xxx")
    if (isUsed) return;
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
     isUsed = true;
