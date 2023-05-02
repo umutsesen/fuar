@@ -8,7 +8,7 @@
   </head>
   <body>
     <aside>
-      <button onclick="clearLocalStorage()">silLocalStorage</button>
+      <button onclick="clearLocalStorage()" style="color:white;margin-left: 25rem;">silLocalStorage</button>
       <div id="debug" style="color:white;"></div>
       <a id="sizeandmeproductimg" href="" style="opacity: 0; height:0px;"></a>
       <img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1.jpg" width="200px" id="sizeandmeProductImg" style="opacity: 0; height:0px;">
@@ -28,15 +28,15 @@
   </body>
 </html>
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
-<!-- 
-<script src="index.js"></script> -->
+
+<script src="index.js"></script>
 
 <script>
   function clearLocalStorage() {
   localStorage.removeItem('kullanım');
 }
   let isUsed = false;
- /*  document.getElementById('cark').style.visibility = "hidden"; */
+  document.getElementById('cark').style.visibility = "hidden";
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
