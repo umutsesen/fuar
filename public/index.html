@@ -1,33 +1,29 @@
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap"
-rel="stylesheet"
-/>
-<link
-href="index.css"
-rel="stylesheet"
-/>
-<link href="index2.css"
-rel="stylesheet"/> 
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link href="index2.css" rel="stylesheet">
+  </head>
+  <body>
+    <aside>
+      <a id="sizeandmeproductimg" href="" style="opacity: 0; height:0px;"></a>
+      <img src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1.jpg" width="200px" id="sizeandmeProductImg" style="opacity: 0; height:0px;">
+      <span id="sizeAndMeProductCode" style="opacity: 0; height:0px;">BSS1-126-11</span>
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+      <div id="selector-wrapper" style="opacity: 0; height:0px;"></div>
+      <div id="sizeandme-widget"></div>
+      <!--  <div>
+      </div>
 
-<aside>
-  <a id="sizeandmeproductimg" href="" style="opacity: 0; height:0px;"></a>
-    <img
-    src="https://www.timeoutdubai.com/cloud/timeoutdubai/2021/09/11/udHvbKwV-IMG-Dubai-UAE-1.jpg"
-    width="200px" id="sizeandmeProductImg" style="opacity: 0; height:0px;"/>
-    <span id="sizeAndMeProductCode" style="opacity: 0; height:0px;">BSS1-126-11</span>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="selector-wrapper" style="opacity: 0; height:0px;"></div>
-    <div id="sizeandme-widget"></div>
- <!--  <div>
-  </div>
-
-  <button id="ekle">Ekle</button> -->
-  <button id="cevir">Cevir Ustammm</button>
-</aside>
-<main id="cark">
-  <canvas></canvas>
-</main>
-
+      <button id="ekle">Ekle</button> -->
+      <button id="cevir" style="visibility:hidden;">Cevir Ustammm</button>
+    </aside>
+    <main id="cark">
+      <canvas></canvas>
+    </main>
+  </body>
+</html>
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
 
 <script src="index.js"></script>
@@ -70,6 +66,7 @@ secenekler.forEach((_, i) => {
 let azalma = -0.01;
 let hiz = 0;
 let aci = 0;
+onsole.log('Hiz:', hiz, 'Aci:', aci)
 function carkiCiz() {
   if (hiz < 0) return;
   alert('Hiz:', hiz, 'Aci:', aci)
@@ -119,7 +116,7 @@ function carkiCiz() {
   cizimKonteksti.restore();
 
   // Draw the center image
-  alert('Hiz:', hiz, 'Aci:', aci)
+  
   const imageSize = 200;  // Define the size of the image
   cizimKonteksti.drawImage(merkezResmi, -imageSize / 2, -imageSize / 2, imageSize, imageSize);
 }
@@ -132,8 +129,7 @@ function carkiCiz() {
 
   
   canvasElementi.addEventListener(touchEvent, () => {
-    alert('Hiz:', hiz, 'Aci:', aci)
-   alert('1')
+  
     if (tikSayaci >= donusAçilari.length) return; // Daha fazla tıklamayı önler
     alert('2')
     isUsed = true;
@@ -146,13 +142,12 @@ function carkiCiz() {
     const hedefDonus = donusAçilari[tikSayaci] * (Math.PI / 180); // Radyana dönüştür
     const donusHizi = hedefDonus / 100; // Dönüş hızını kontrol eden değeri ayarla
     hiz = donusHizi;
-    alert('sadsadasd')
-    alert('hizzz')
+   
     tikSayaci++;
   })
 
   window.requestAnimationFrame(function animasyon(ts) {
-    alert('Hiz:', hiz, 'Aci:', aci)
+ 
     if (!sonGuncelleme) sonGuncelleme = ts;
     if (ts - sonGuncelleme < 10) {
       return window.requestAnimationFrame(animasyon);
@@ -161,7 +156,7 @@ function carkiCiz() {
     sonGuncelleme = ts;
     hiz += hiz * azalma;
     carkiCiz();
-    alert('Hiz:', hiz, 'Aci:', aci)
+ 
     window.requestAnimationFrame(animasyon);
   })
 
