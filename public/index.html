@@ -20,7 +20,9 @@ rel="stylesheet"/>
     <div id="sizeandme-widget"></div>
  <!--  <div>
   </div>
+
   <button id="ekle">Ekle</button> -->
+  <button id="cevir">Cevir Ustammm</button>
 </aside>
 <main id="cark">
   <canvas></canvas>
@@ -28,11 +30,11 @@ rel="stylesheet"/>
 
 <!-- Kullanılan harici JavaScript kütüphaneleri -->
 
-<script src="index.js"></script>
+<!-- <script src="index.js"></script> -->
 
 <script>
   let isUsed = false;
-  document.getElementById('cark').style.visibility = "hidden";
+/*   document.getElementById('cark').style.visibility = "hidden"; */
 const canvasElementi = document.querySelector('canvas');
 const merkezResmi = new Image();
 /* merkezResmi.src = './sizeandme.svg'; //logo wip */
@@ -122,12 +124,7 @@ function carkiCiz() {
 
   let sonGuncelleme;
   let isSpinning = false; // Add a flag to track if the wheel is spinning
-  canvasElementi.onchange = () => {
-    alert("123123123")
-  }
-  canvasElementi.ondrag = () => {
-    alert("5535")
-  }
+  cevir.onclick = () => canvasElementi.click()
   canvasElementi.onclick = () => {
    /*  alert("1xxx") */
    if (isUsed) return;
